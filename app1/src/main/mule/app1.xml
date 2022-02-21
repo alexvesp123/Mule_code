@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="135fbce7-476a-42eb-b4f2-f0c5718dc667" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="app1Flow" doc:id="407b7a79-2359-4e15-a76f-ef19a1134765" >
+		<http:listener doc:name="Listener" doc:id="c49aa8d5-8081-4462-a0e1-9a2d142a8b15" config-ref="HTTP_Listener_config" path="/app1"/>
+		<set-payload value='#["la hora es " ++ now()]' doc:name="Set Payload" doc:id="e8088506-4bf5-49a2-93b3-04d09d0d2403" />
+	</flow>
+</mule>
